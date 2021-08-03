@@ -1,0 +1,38 @@
+2021-08-02 23:33:18,266 INFO wdm.WebDriverManager [main] Using chromedriver 92.0.4515.43 (since Google Chrome 92 is installed in your machine)
+2021-08-02 23:33:18,293 INFO wdm.WebDriverManager [main] Exporting webdriver.chrome.driver as C:\Users\Svetla\.m2\repository\webdriver\chromedriver\win32\92.0.4515.43\chromedriver.exe
+2021-08-02 23:33:29,339 INFO  [main] Main cloud google page is loaded
+2021-08-02 23:33:42,162 INFO  [main] You are linked to 'Pricing Calculator Page'
+2021-08-02 23:33:42,225 INFO  [main] Total number of outer iframes is: 3
+2021-08-02 23:33:42,245 INFO  [main] You are switched to the required outer iframe.
+2021-08-02 23:33:42,298 INFO  [main] Title of the required outer iframe is:  maia-main
+2021-08-02 23:33:42,327 INFO  [main] Number of inner iframes inside the outer one: 1
+2021-08-02 23:33:42,426 INFO  [main] You are switched to the required inner iframe #myFrame.
+2021-08-02 23:33:42,480 INFO  [main] Title of the page is: Google Cloud Pricing Calculator
+2021-08-02 23:33:42,774 INFO  [main] Number of instances: 4
+2021-08-02 23:33:43,854 INFO  [main] Operating system is Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS
+2021-08-02 23:33:44,735 INFO  [main] Virtual machine Class is Regular
+2021-08-02 23:33:45,658 INFO  [main] Series is N1
+2021-08-02 23:33:46,610 INFO  [main] Machine type is n1-standard-8 (vCPUs: 8, RAM: 30GB)
+2021-08-02 23:33:46,640 INFO  [main] Total number of outer iframes is: 3
+2021-08-02 23:33:46,660 INFO  [main] You are switched to the required outer iframe.
+2021-08-02 23:33:46,705 INFO  [main] Title of the required outer iframe is:  maia-main
+2021-08-02 23:33:46,714 INFO  [main] Number of inner iframes inside the outer one: 1
+2021-08-02 23:33:46,746 INFO  [main] You are switched to the required inner iframe #myFrame.
+2021-08-02 23:33:46,772 INFO  [main] Title of the page is: Google Cloud Pricing Calculator
+2021-08-02 23:33:46,942 INFO  [main] GPU is added
+2021-08-02 23:33:47,959 INFO  [main] Local SSD is 2x375 GB
+2021-08-02 23:33:48,430 INFO  [main] Datacentre location is Oregon (us-west1)
+2021-08-02 23:33:49,350 INFO  [main] Number of GPUs is 1
+2021-08-02 23:33:50,317 INFO  [main] Type of GPUs is NVIDIA Tesla V100
+2021-08-02 23:33:51,293 INFO  [main] Committed usage is 1 Year
+2021-08-02 23:33:51,888 INFO  [main] Total Estimated Cost has been calculated
+2021-08-02 23:33:52,276 INFO  [main] Calculated Total Estimated Cost is Total Estimated Cost: USD 5,413.06 per 1 month
+2021-08-02 23:33:56,252 INFO  [main] PrivacyPolicy is dismissed
+2021-08-02 23:33:57,563 INFO  [main] Free temporary email address is random created
+2021-08-02 23:33:57,931 INFO  [main] Total number of outer iframes is: 3
+2021-08-02 23:33:57,956 INFO  [main] You are switched to the required outer iframe.
+2021-08-02 23:33:57,995 INFO  [main] Title of the required outer iframe is:  maia-main
+2021-08-02 23:33:58,015 INFO  [main] Number of inner iframes inside the outer one: 1
+2021-08-02 23:33:58,072 INFO  [main] You are switched to the required inner iframe #myFrame.
+2021-08-02 23:33:58,138 INFO  [main] Title of the page is: Google Cloud Pricing Calculator
+2021-08-02 23:34:19,007 INFO  [main] Inbox Total Estimated Monthly Cost is  USD 5,413.06
