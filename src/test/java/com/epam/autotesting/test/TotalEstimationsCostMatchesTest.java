@@ -1,16 +1,16 @@
 package com.epam.autotesting.test;
 
+import com.epam.autotesting.model.Computer;
 import com.epam.autotesting.page.MainCloudGooglePage;
 import com.epam.autotesting.page.PricingCalculatorPage;
 import com.epam.autotesting.page.SearchResultsCloudGooglePage;
 import com.epam.autotesting.page.TemporaryEmailMailpoofPage;
-import org.openqa.selenium.JavascriptExecutor;
+import com.epam.autotesting.service.ComputerRenter;
 import org.openqa.selenium.WindowType;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.containsString;
 
 public class TotalEstimationsCostMatchesTest extends RequiredConditions {
 
@@ -18,36 +18,33 @@ public class TotalEstimationsCostMatchesTest extends RequiredConditions {
             "monthly cost - by pricing calculator and the one emailed")
     public void verifyEqualityOfTotalEstimatedMonthlyCosts() {
 
-        MainCloudGooglePage search = new MainCloudGooglePage().openPage();
-        search.searchForPricingCalculatorLink();
+        Computer engine = ComputerRenter.withCredentialsFromProperty();
+
+        new MainCloudGooglePage()
+                .openPage()
+                .searchForPricingCalculatorLink();
         new SearchResultsCloudGooglePage().linkToPricingCalculatorLink();
         PricingCalculatorPage pricePage = new PricingCalculatorPage();
-        pricePage.calculateTotalEstimationMonthlyCost();
+        pricePage.calculateTotalEstimationMonthlyCost(engine);
         String calculatedTotalEstimatedMonthlyCost = pricePage.getAmountOfTheCalculatedCost();
         pricePage.emailEstimate();
 
-        JavascriptExecutor jem = (JavascriptExecutor) driver;
-        jem.executeScript("window.scrollBy(0,1300)", "");
         String tab1 = driver.getWindowHandle();
 
         driver.switchTo().newWindow(WindowType.TAB);
         TemporaryEmailMailpoofPage email = new TemporaryEmailMailpoofPage()
-                .openPage();
-        email.dismissPrivacyPolicy();
-        email.createRandomEmailAddress();
-        email.copyRandomEmail();
+                .openPage()
+                .dismissPrivacyPolicy()
+                .createRandomEmailAddress()
+                .copyRandomEmail();
         String tab2 = driver.getWindowHandle();
 
         driver.switchTo().window(tab1);
         pricePage.sendEmailForEstimationCost();
 
         driver.switchTo().window(tab2);
-        String inboxTotalEstimatedMonthlyCost = new TemporaryEmailMailpoofPage()
-                .getInboxTotalEstimatedMonthlyCost();
-        int inboxLength = inboxTotalEstimatedMonthlyCost.length();
-        boolean totalEstimationsCostMatchesTest = calculatedTotalEstimatedMonthlyCost
-                .regionMatches(true, 22, inboxTotalEstimatedMonthlyCost, 0, inboxLength);
+        String inboxTotalEstimatedMonthlyCost = email.getInboxTotalEstimatedMonthlyCost();
 
-        assertThat(totalEstimationsCostMatchesTest, is(equalTo(true)));
+        assertThat(calculatedTotalEstimatedMonthlyCost, containsString(inboxTotalEstimatedMonthlyCost));
     }
 }
