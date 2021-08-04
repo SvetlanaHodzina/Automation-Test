@@ -41,24 +41,28 @@ public class TemporaryEmailMailpoofPage extends AbstractPage {
         return this;
     }
 
-    public  void dismissPrivacyPolicy() {
+    public TemporaryEmailMailpoofPage dismissPrivacyPolicy() {
+
         new WebDriverWait(driver, Duration.ofSeconds(this.WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.elementToBeClickable(dismissButtonPrivacyPolicy));
         dismissButtonPrivacyPolicy.click();
         logger.info("PrivacyPolicy is dismissed");
+        return this;
     }
-    public  void createRandomEmailAddress() {
+    public TemporaryEmailMailpoofPage createRandomEmailAddress() {
         JavascriptExecutor js =(JavascriptExecutor)driver;
         js.executeScript("scroll(0, 250)");
         new WebDriverWait(driver, Duration.ofSeconds(this.WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.elementToBeClickable(buttonCreateRandomTempEmail));
         buttonCreateRandomTempEmail.click();
         logger.info("Free temporary email address is random created");
+        return this;
     }
 
-    public void copyRandomEmail() {
+    public TemporaryEmailMailpoofPage copyRandomEmail() {
         new WebDriverWait(driver, Duration.ofSeconds(this.WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.elementToBeClickable(buttonCopyTempEmail)).click();
+        return this;
     }
 
     public String getInboxTotalEstimatedMonthlyCost() {
