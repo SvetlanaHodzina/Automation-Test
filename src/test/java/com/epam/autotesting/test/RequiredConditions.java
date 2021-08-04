@@ -12,8 +12,7 @@ public class RequiredConditions {
     public static WebDriver driver;
 
     @BeforeMethod()
-    public void setUp() {
-        System.getProperty("environment");
+    public void setUp() {       
         driver = WebDriverConnector.getDriver();
     }
 
