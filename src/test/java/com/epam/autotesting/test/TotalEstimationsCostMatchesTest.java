@@ -3,7 +3,6 @@ package com.epam.autotesting.test;
 import com.epam.autotesting.model.Computer;
 import com.epam.autotesting.page.MainCloudGooglePage;
 import com.epam.autotesting.page.PricingCalculatorPage;
-import com.epam.autotesting.page.SearchResultsCloudGooglePage;
 import com.epam.autotesting.page.TemporaryEmailMailpoofPage;
 import com.epam.autotesting.service.ComputerRenter;
 import org.openqa.selenium.WindowType;
@@ -22,12 +21,11 @@ public class TotalEstimationsCostMatchesTest extends RequiredConditions {
 
         new MainCloudGooglePage()
                 .openPage()
-                .searchForPricingCalculatorLink();
-        new SearchResultsCloudGooglePage().linkToPricingCalculatorLink();
-        PricingCalculatorPage pricePage = new PricingCalculatorPage();
-        pricePage.calculateTotalEstimationMonthlyCost(engine);
-        String calculatedTotalEstimatedMonthlyCost = pricePage.getAmountOfTheCalculatedCost();
-        pricePage.emailEstimate();
+                .searchForPricingCalculatorLink()
+                .linkToPricingCalculatorLink();
+        String calculatedTotalEstimatedMonthlyCost = new PricingCalculatorPage()
+                .calculateTotalEstimationMonthlyCost(engine).getAmountOfTheCalculatedCost();
+        new PricingCalculatorPage().emailEstimate();
 
         String tab1 = driver.getWindowHandle();
 
@@ -40,7 +38,7 @@ public class TotalEstimationsCostMatchesTest extends RequiredConditions {
         String tab2 = driver.getWindowHandle();
 
         driver.switchTo().window(tab1);
-        pricePage.sendEmailForEstimationCost();
+        new PricingCalculatorPage().sendEmailForEstimationCost();
 
         driver.switchTo().window(tab2);
         String inboxTotalEstimatedMonthlyCost = email.getInboxTotalEstimatedMonthlyCost();
