@@ -1,3 +1,3 @@
-# Automation-Test
+# Test Automation
 
-Automating test of "Google Cloud Platform Pricing Calculator"
+Automated test of "Google Cloud Platform Pricing Calculator"
