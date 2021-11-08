@@ -12,34 +12,35 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static java.time.Duration.ofSeconds;
+import static org.openqa.selenium.By.xpath;
 
 public class PricingCalculatorPage extends AbstractPage {
+    
     private final Logger logger = (Logger) LogManager.getRootLogger();
 
     public final String OUTER_FRAME_XPATH = "//html//body//div[@id='maia-main']";
     public final String PAGE_TITLE_XPATH = "//html//body//div//h2[text()='Google Cloud Pricing Calculator']";
-    public final String NUMBER_INSTANCES_XPATH = "//input[@id='input_67']";
-    public final String MENU_BUTTON_OS_XPATH = "//md-select[@id='select_79']";
-    public final String OS_ELEMENT_XPATH = "//md-option[@id='select_option_68']//div[contains(text(),'%s')]";
-    public final String MENU_BUTTON_VMCLASS_XPATH = "//md-select[@id='select_83']";
-    public final String VM_CLASS_ELEMENT_XPATH = "//div[@id='select_container_84']//md-content" +
-            "//md-option//div[contains(text(),'%s')]";
-    public final String MENU_BUTTON_SERIES_XPATH = "//md-select[@id='select_91']";
-    public final String SERIES_ELEMENT_XPATH = "//div[@id='select_container_92']//md-option//div[contains(text(),'%s')]";
-    public final String MENU_BUTTON_MACHINETYPE_XPATH = "//md-select[@id='select_93']";
-    public final String MACHINETYPE_ELEMENT_XPATH = "//div[@id='select_container_94']//md-option//div[contains(text(),'%s')]";
+    public final String NUMBER_INSTANCES_XPATH = "//input[@id='input_74']";
+    public final String MENU_BUTTON_OS_XPATH = "//md-select-value[@id='select_value_label_66']";
+    public final String OS_ELEMENT_XPATH = "//md-option[@id='select_option_76']";
+    public final String MENU_BUTTON_VMCLASS_XPATH = "//md-select[@id='select_91']";
+    public final String VM_CLASS_ELEMENT_XPATH = "//md-option[@id='select_option_89']//div[contains(text(),'%s')]";
+    public final String MENU_BUTTON_SERIES_XPATH = "//md-select[@id='select_99']";
+    public final String SERIES_ELEMENT_XPATH = "//md-option[@id='select_option_214']//div[contains(text(),'%s')]";
+    public final String MENU_BUTTON_MACHINETYPE_XPATH = "//md-select[@id='select_101']";
+    public final String MACHINETYPE_ELEMENT_XPATH = "//md-option[@id='select_option_417']//div[contains(text(),'%s')]";
     public final String CHECKBOX_ADDGPU_ELEMENT_XPATH = "//md-checkbox[contains(@aria-label,'Add GPUs') " +
             "and contains(@ng-model,'listingCtrl.computeServer.addGPUs')]";
-    public final String MENU_BUTTON_NUMBER_GPU_XPATH = "//md-select-value[@id='select_value_label_425']";
-    public final String NUMBER_GPU_ELEMENT_XPATH = "//div[@id='select_container_428']//md-option//div[contains(text(),'%s')]";
-    public final String MENU_BUTTON_TYPE_GPU_XPATH = "//md-select-value[@id='select_value_label_426']";
-    public final String TYPE_GPU_ELEMENT_XPATH = "//div[@id='select_container_430']//md-option//div[contains(text(),'%s')]";
-    public final String MENU_BUTTON_LOCAL_SSD_XPATH = "//md-select-value[@id='select_value_label_387']";
-    public final String LOCAL_SSD_ELEMENT_XPATH = "//div[@id='select_container_389']//md-option//div[contains(text(),'%s')]";
-    public final String MENU_BUTTON_LOCATION_XPATH = "//md-select-value[@id='select_value_label_64']";
-    public final String LOCATION_ELEMENT_XPATH = "//div[@id='select_container_96']//md-option//div[contains(text(),'%s')]";
-    public final String MENU_BUTTON_USAGE_XPATH = "//md-select-value[@id='select_value_label_65']";
-    public final String USAGE_ELEMENT_XPATH = "//div[@id='select_container_103']//md-option//div[contains(text(),'%s')]";
+    public final String MENU_BUTTON_NUMBER_GPU_XPATH = "//md-select-value[@id='select_value_label_449']/span";
+    public final String NUMBER_GPU_ELEMENT_XPATH = "//div[@id='select_container_452']//div[contains(text(),'%s')]";
+    public final String MENU_BUTTON_TYPE_GPU_XPATH = "//md-select-value[@id='select_value_label_450']";
+    public final String TYPE_GPU_ELEMENT_XPATH = "//div[@id='select_container_454']//md-option//div[contains(text(),'%s')]";
+    public final String MENU_BUTTON_LOCAL_SSD_XPATH = "//md-select-value[@id='select_value_label_411']";
+    public final String LOCAL_SSD_ELEMENT_XPATH = "//div[@id='select_container_413']//md-option//div[contains(text(),'%s')]";
+    public final String MENU_BUTTON_LOCATION_XPATH = "//md-select-value[@id='select_value_label_72']";
+    public final String LOCATION_ELEMENT_XPATH = "//div[@id='select_container_108']//md-option//div[contains(text(),'%s')]";
+    public final String MENU_BUTTON_USAGE_XPATH = "//md-select-value[@id='select_value_label_73']";
+    public final String USAGE_ELEMENT_XPATH = "//div[@id='select_container_115']//md-option//div[contains(text(),'%s')]";
 
     @FindBy(xpath = "//main[@class='devsite-main-content']")
     private WebElement openedSite;
@@ -53,7 +54,7 @@ public class PricingCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//button[@ng-click='cloudCartCtrl.showEmailForm();']")
     private WebElement buttonEmailEstimate;
 
-    @FindBy(xpath = "//input[@id='input_510']")
+    @FindBy(xpath = "//input[@id='input_534']")
     private WebElement inputEmailAddress;
 
     @FindBy(xpath = "//button[@aria-label='Send Email']")
@@ -71,14 +72,14 @@ public class PricingCalculatorPage extends AbstractPage {
         logger.info("Total number of outer iframes is: " + outerFrameSize);
         driver.switchTo().frame(0);
         logger.info("You are switched to the required outer iframe.");
-        String outerFrame = driver.findElement(By.xpath(OUTER_FRAME_XPATH)).getAttribute("id");
+        String outerFrame = driver.findElement(xpath(OUTER_FRAME_XPATH)).getAttribute("id");
         logger.info("Title of the required outer iframe is:  " + outerFrame);
 
         int innerFrameSize = driver.findElements(By.tagName("iframe")).size();
         logger.info("Number of inner iframes inside the outer one: " + innerFrameSize);
         driver.switchTo().frame("myFrame");
         logger.info("You are switched to the required inner iframe #myFrame.");
-        String title = driver.findElement(By.xpath(PAGE_TITLE_XPATH)).getAttribute("innerText");
+        String title = driver.findElement(xpath(PAGE_TITLE_XPATH)).getAttribute("innerText");
         logger.info("Title of the page is: " + title);
         return this;
     }
@@ -89,7 +90,7 @@ public class PricingCalculatorPage extends AbstractPage {
     }
 
     public PricingCalculatorPage inputNumberOfInstances(String instances) {
-        WebElement numberOfInstances = driver.findElement(By.xpath(NUMBER_INSTANCES_XPATH));
+        WebElement numberOfInstances = driver.findElement(xpath(NUMBER_INSTANCES_XPATH));
         numberOfInstances.click();
         numberOfInstances.sendKeys(instances);
         logger.info("Number of instances: " + numberOfInstances.getAttribute("value"));
@@ -98,18 +99,18 @@ public class PricingCalculatorPage extends AbstractPage {
 
     public PricingCalculatorPage inputOS(String os) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(MENU_BUTTON_OS_XPATH))).click();
+                .until(ExpectedConditions.elementToBeClickable(xpath(MENU_BUTTON_OS_XPATH))).click();
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(OS_ELEMENT_XPATH, os)))).click();
+                .until(ExpectedConditions.visibilityOfElementLocated(xpath(String.format(OS_ELEMENT_XPATH, os)))).click();
         logger.info("Operating system is " + os);
         return this;
     }
 
     public PricingCalculatorPage inputVMClass(String vmClass) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(MENU_BUTTON_VMCLASS_XPATH))).click();
+                .until(ExpectedConditions.visibilityOfElementLocated(xpath(MENU_BUTTON_VMCLASS_XPATH))).click();
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+                .until(ExpectedConditions.visibilityOfElementLocated(xpath
                         (String.format(VM_CLASS_ELEMENT_XPATH, vmClass)))).click();
         logger.info("Virtual machine Class is " + vmClass);
         return this;
@@ -117,9 +118,9 @@ public class PricingCalculatorPage extends AbstractPage {
 
     public PricingCalculatorPage inputSeries(String series) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(MENU_BUTTON_SERIES_XPATH))).click();
+                .until(ExpectedConditions.visibilityOfElementLocated(xpath(MENU_BUTTON_SERIES_XPATH))).click();
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+                .until(ExpectedConditions.visibilityOfElementLocated(xpath
                         (String.format(SERIES_ELEMENT_XPATH, series)))).click();
         logger.info("Series is " + series);
         return this;
@@ -127,9 +128,9 @@ public class PricingCalculatorPage extends AbstractPage {
 
     public PricingCalculatorPage inputMachineType(String machineType) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(MENU_BUTTON_MACHINETYPE_XPATH))).click();
+                .until(ExpectedConditions.visibilityOfElementLocated(xpath(MENU_BUTTON_MACHINETYPE_XPATH))).click();
         JavascriptExecutor je = (JavascriptExecutor) driver;
-        WebElement machineTYPE = driver.findElement((By.xpath(String.format(MACHINETYPE_ELEMENT_XPATH, machineType))));
+        WebElement machineTYPE = driver.findElement((xpath(String.format(MACHINETYPE_ELEMENT_XPATH, machineType))));
         je.executeScript("arguments[0].scrollIntoView(true);", machineTYPE);
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.visibilityOf(machineTYPE)).click();
@@ -138,7 +139,7 @@ public class PricingCalculatorPage extends AbstractPage {
     }
 
     public PricingCalculatorPage addGPU() {
-        WebElement checkboxAddGPUs = driver.findElement((By.xpath(CHECKBOX_ADDGPU_ELEMENT_XPATH)));
+        WebElement checkboxAddGPUs = driver.findElement((xpath(CHECKBOX_ADDGPU_ELEMENT_XPATH)));
         checkboxAddGPUs.click();
         logger.info("GPU is added");
         return this;
@@ -146,36 +147,36 @@ public class PricingCalculatorPage extends AbstractPage {
 
     public PricingCalculatorPage inputNumberOfGPUs(String numberGPU) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(MENU_BUTTON_NUMBER_GPU_XPATH))).click();
+                .until(ExpectedConditions.elementToBeClickable(xpath(MENU_BUTTON_NUMBER_GPU_XPATH))).click();
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(NUMBER_GPU_ELEMENT_XPATH, numberGPU)))).click();
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(NUMBER_GPU_ELEMENT_XPATH, numberGPU)))).click();
         logger.info("Number of GPUs is " + numberGPU);
         return this;
     }
 
     public PricingCalculatorPage inputTypeOfGPUs(String typeGPU) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(MENU_BUTTON_TYPE_GPU_XPATH))).click();
+                .until(ExpectedConditions.elementToBeClickable(xpath(MENU_BUTTON_TYPE_GPU_XPATH))).click();
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(TYPE_GPU_ELEMENT_XPATH, typeGPU)))).click();
+                .until(ExpectedConditions.elementToBeClickable(xpath(String.format(TYPE_GPU_ELEMENT_XPATH, typeGPU)))).click();
         logger.info("Type of GPUs is " + typeGPU);
         return this;
     }
 
     public PricingCalculatorPage inputLocalSSD(String localSSD) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(MENU_BUTTON_LOCAL_SSD_XPATH))).click();
+                .until(ExpectedConditions.elementToBeClickable(xpath(MENU_BUTTON_LOCAL_SSD_XPATH))).click();
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(LOCAL_SSD_ELEMENT_XPATH, localSSD)))).click();
+                .until(ExpectedConditions.elementToBeClickable(xpath(String.format(LOCAL_SSD_ELEMENT_XPATH, localSSD)))).click();
         logger.info("Local SSD is " + localSSD);
         return this;
     }
 
     public PricingCalculatorPage inputDataCentreLocation(String dataCentreLocation) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(MENU_BUTTON_LOCATION_XPATH))).click();
+                .until(ExpectedConditions.elementToBeClickable(xpath(MENU_BUTTON_LOCATION_XPATH))).click();
         JavascriptExecutor je = (JavascriptExecutor) driver;
-        WebElement location = driver.findElement(By.xpath(String.format(LOCATION_ELEMENT_XPATH, dataCentreLocation)));
+        WebElement location = driver.findElement(xpath(String.format(LOCATION_ELEMENT_XPATH, dataCentreLocation)));
         je.executeScript("arguments[0].scrollIntoView(true);", location);
         location.click();
         logger.info("Datacentre location is " + dataCentreLocation);
@@ -184,15 +185,14 @@ public class PricingCalculatorPage extends AbstractPage {
 
     public PricingCalculatorPage inputCommittedUsage(String usage) {
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(By.xpath(MENU_BUTTON_USAGE_XPATH))).click();
+                .until(ExpectedConditions.elementToBeClickable(xpath(MENU_BUTTON_USAGE_XPATH))).click();
         new WebDriverWait(driver, ofSeconds(this.WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(USAGE_ELEMENT_XPATH, usage)))).click();
+                .until(ExpectedConditions.visibilityOfElementLocated(xpath(String.format(USAGE_ELEMENT_XPATH, usage)))).click();
         logger.info("Committed usage is " + usage);
         return this;
     }
 
     public PricingCalculatorPage calculateTotalEstimationMonthlyCost(Computer engine) {
-
         goToIframe();
         inputNumberOfInstances(engine.getInstances());
         inputOS(engine.getOs());
